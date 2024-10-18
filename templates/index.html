@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mt-5">Explore Cafes</h1>
+<table class="table table-hover mt-3">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Opening Hours</th>
+        <th>Closing Hours</th>
+        <th>Coffee Rating</th>
+        <th>WiFi Rating</th>
+        <th>Power Availability</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for cafe in cafes %}
+        <tr>
+            <td>{{ cafe.name }}</td>
+            <td><a href="{{ cafe.map_url }}" target="_blank">View on Map</a></td>
+            <td>{{ cafe.opening_time }}</td>
+            <td>{{ cafe.closing_time }}</td>
+            <td>{{ cafe.coffee_rating }}</td>
+            <td>{{ cafe.wifi_rating }}</td>
+            <td>{{ cafe.power_rating }}</td>
+            <td>
+                <form action="/delete/{{ cafe.id }}" method="POST">
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

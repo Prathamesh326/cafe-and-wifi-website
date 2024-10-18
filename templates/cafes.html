@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Cafes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5 text-primary">Cafes with Wifi & Great Coffee</h1>
+        <a href="{{ url_for('add_cafe') }}" class="btn btn-success mb-4">Add New Cafe</a>
+        <div class="row">
+            {% for cafe in cafes %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ cafe.img_url }}" class="card-img-top cafe-img" alt="Cafe Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ cafe.name }}</h5>
+                        <p class="card-text"><strong>Location:</strong> {{ cafe.location }}</p>
+                        <p class="card-text"><strong>Wi-Fi:</strong> {{ 'Yes' if cafe.has_wifi else 'No' }}</p>
+                        <p class="card-text"><strong>Sockets:</strong> {{ 'Yes' if cafe.has_sockets else 'No' }}</p>
+                        <p class="card-text"><strong>Toilet:</strong> {{ 'Yes' if cafe.has_toilet else 'No' }}</p>
+                        <p class="card-text"><strong>Can Take Calls:</strong> {{ 'Yes' if cafe.can_take_calls else 'No' }}</p>
+                        <p class="card-text"><strong>Seats:</strong> {{ cafe.seats }}</p>
+                        <p class="card-text"><strong>Coffee Price:</strong> {{ cafe.coffee_price }}</p>
+                        <a href="{{ url_for('delete_cafe', cafe_id=cafe.id) }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

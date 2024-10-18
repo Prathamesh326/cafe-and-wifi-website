@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cafe-img {
+    max-height: 200px;
+    object-fit: cover;
+}
+
+form {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+form input, form button {
+    margin-bottom: 15px;
+}
+
+form button {
+    width: 100%;
+}
